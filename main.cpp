@@ -10,18 +10,19 @@ int main(int argc, char *argv[]) {
 	std::string ifile = "";
 	std::string ofile = "";
 
-	const std::string usageMsg = "\nInvalid parameters! Usage:\n\n" +
-		"Example:\n\n" +
-		"jakeRC4 <-e|-d> -pass password:salt -in ifile -out ofile\n\n" +
-		"Flags:\n\n" +
-		"\t-e : Use to encrypt a plaintext file using RC4\n" +
-		"\t-d : Use to decrypt an encrypted file using RC4\n" +
-		"\t-pass : Password:Salt to generate an RC4 keystream used in -e,-d\n" +
-		"\t-in : File containing encrypted/plaintext input file\n" +
+	const char *usageMsg = 
+		"\nInvalid parameters! Usage:\n\n"
+		"Example:\n\n"
+		"jakeRC4 <-e|-d> -pass password:salt -in ifile -out ofile\n\n"
+		"Flags:\n\n"
+		"\t-e : Use to encrypt a plaintext file using RC4\n"
+		"\t-d : Use to decrypt an encrypted file using RC4\n"
+		"\t-pass : Password:Salt to generate an RC4 keystream used in -e,-d\n"
+		"\t-in : File containing encrypted/plaintext input file\n"
 		"\t-out : File to place encryped/plaintext after operation\n";
 
 	// Verify the correct number of arguments
-	if (arc < 8) {
+	if (argc < 8) {
 		std::cout << usageMsg;
 		return 1;
 	}
@@ -48,8 +49,8 @@ int main(int argc, char *argv[]) {
 			}
 
 			else {
-				cout << "No salt provided! Please provide your -pass in password:salt form\n";
-				cout << usageMsg;
+				std::cout << "No salt provided! Please provide your -pass in password:salt form\n";
+				std::cout << usageMsg;
 				return 1;
 			}
 
