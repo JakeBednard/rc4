@@ -38,12 +38,11 @@ int main(int argc, char *argv[]) {
 		}
 
 		else if (temp == "-pass") {
-			
-			int passSaltSplit;
 		
 			temp = std::string(argv[++i]);
 
-			if (0 >= (passSaltSplit = temp.find(":"))) {
+			int passSaltSplit = temp.find(":");
+			if (passSaltSplit > 0) {
 				password = temp.substr(0,passSaltSplit);
 				salt = temp.substr(passSaltSplit + 1);
 			}
