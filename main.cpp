@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 		"\t-d : Use to decrypt an encrypted file using RC4\n"
 		"\t-pass : Password:Salt to generate an RC4 keystream used in -e,-d\n"
 		"\t-in : File containing encrypted/plaintext input file\n"
-		"\t-out : File to place encryped/plaintext after operation\n";
+		"\t-out : File to place encryped/plaintext after operation\n\n";
 
 	// Verify the correct number of arguments
 	if (argc < 8) {
@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
 		}
 
 		else if (temp == "-out") {
-			ifile = std::string(argv[++i]);
+			ofile = std::string(argv[++i]);
 		}
 
 		else {
