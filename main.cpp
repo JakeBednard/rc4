@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
 		}
 
 		else {
-			std::cout << errorMsg;
+			std::cout << usageMsg;
 			return 1;
 		}
 
