@@ -1,6 +1,14 @@
+/**
+Command line parser for entrypoint into the RC4 implementation.
+Takes care of verifying that the user has given the correct parameters
+and if not, it displays an usage message. 
+
+J.Bednard 2018-04-13
+*/
+
 #include <iostream>
 #include <string>
-//#include "rc4.h"
+#include "rc4.h"
 
 int main(int argc, char *argv[]) {
 
@@ -12,8 +20,7 @@ int main(int argc, char *argv[]) {
 
 	const char *usageMsg = 
 		"\nInvalid parameters! Usage:\n\n"
-		"Example:\n\n"
-		"jakeRC4 <-e|-d> -pass password:salt -in ifile -out ofile\n\n"
+		"\tjakeRC4 <-e|-d> -pass password:salt -in ifile -out ofile\n\n"
 		"Flags:\n\n"
 		"\t-e : Use to encrypt a plaintext file using RC4\n"
 		"\t-d : Use to decrypt an encrypted file using RC4\n"
@@ -64,6 +71,7 @@ int main(int argc, char *argv[]) {
 		}
 
 		else {
+			std::cout << "Unknown parameter: " << temp << "\n";
 			std::cout << usageMsg;
 			return 1;
 		}
