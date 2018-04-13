@@ -8,7 +8,7 @@ J.Bednard 2018-04-13
 
 #include <iostream>
 #include <string>
-#include "rc4.h"
+#include "jake_rc4.h"
 
 int main(int argc, char *argv[]) {
 

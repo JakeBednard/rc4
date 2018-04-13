@@ -1,11 +1,15 @@
 #include <iostream>
+#include <string>
+#include "openssl/rc4.h"
 
-#ifndef RC4_H
-#define RC4_H
+#ifndef JakeRC4_H
+#define JakeRC4_H
 
-class RC4 {
+class JakeRC4 {
 
-
+public:
+	int encrypt(std::string password, std::string ifile, std::string ofile);
+	int decrypt(std::string password, std::string ifile, std::string ofile);
 
 };
 
