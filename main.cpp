@@ -12,9 +12,9 @@ J.Bednard 2018-04-13
 
 int main(int argc, char *argv[]) {
 
-	std::string operation_type = "";
+	std::string operationType = "";
+	std::string passwordType = "";
 	std::string password = "";
-	std::string salt = "";
 	std::string ifile = "";
 	std::string ofile = "";
 
@@ -41,17 +41,17 @@ int main(int argc, char *argv[]) {
 		temp = std::string(argv[i]);
 
 		if (temp == "-e" || temp == "-d") {
-			operation_type = temp;
+			operationType = temp;
 		}
 
 		else if (temp == "-pass") {
 		
 			temp = std::string(argv[++i]);
 
-			int passSaltSplit = temp.find(":");
-			if (passSaltSplit > 0) {
-				password = temp.substr(0,passSaltSplit);
-				salt = temp.substr(passSaltSplit + 1);
+			int passwordSplit = temp.find(":");
+			if (passwordSplit > 0) {
+				passwordType = temp.substr(0,passwordSplit);
+				password = temp.substr(passwordSplit + 1);
 			}
 
 			else {
@@ -80,9 +80,9 @@ int main(int argc, char *argv[]) {
 
 	// Verify that all arguments have been set, if so proceed
 	if (
-		operation_type == "" ||
+		operationType == "" ||
+		passwordType == "" ||
 		password == "" ||
-		salt == "" ||
 		ifile == "" ||
 		ofile == ""
 	) {
@@ -92,9 +92,10 @@ int main(int argc, char *argv[]) {
 	
 	// Everythings set, lets proceed
 	else {
-		std::cout << "Operation Type: " << operation_type << "\n";
+		JakeRC4().encrypt(&password[0u], password.length(), &ifile[0u], &ofile[0u]);
+		std::cout << "\nOperation Type: " << operationType << "\n";
+		std::cout << "Password Type: " << passwordType << "\n";
 		std::cout << "Password: " << password << "\n";
-		std::cout << "Salt: " << salt << "\n";
 		std::cout << "Input File: " << ifile << "\n";
 		std::cout << "Output File: " << ofile << "\n";
 	}
